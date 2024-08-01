@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Age Calculator</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body,
+        input,
+        button {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-blue-600 flex items-center justify-center min-h-screen">
+    <div class="bg-blue-600 rounded-lg p-8 w-full max-w-lg">
+        <div class="mb-8 bg-black p-8 rounded-lg">
+            <form id="ageForm" class=" flex items-center gap-8">
+                <input type="date" required id="date-input"
+                    class="w-2/3 h-12 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit"
+                    class="w-1/3 h-12 bg-white font-medium rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Calculate</button>
+            </form>
+        </div>
+        <div class="flex justify-between gap-5">
+            <div class="flex flex-col items-center bg-black text-white rounded-lg p-4 shadow-lg w-1/3">
+                <span id="years" class="text-2xl font-semibold">-</span>
+                <p class="text-sm text-gray-400">Years</p>
+            </div>
+            <div class="flex flex-col items-center bg-black text-white rounded-lg p-4 shadow-lg w-1/3">
+                <span id="months" class="text-2xl font-semibold">-</span>
+                <p class="text-sm text-gray-400">Months</p>
+            </div>
+            <div class="flex flex-col items-center bg-black text-white rounded-lg p-4 shadow-lg w-1/3">
+                <span id="days" class="text-2xl font-semibold">-</span>
+                <p class="text-sm text-gray-400">Days</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+<!-- 
+
+<form id="ageForm" class="space-y-4">
+    <div>
+        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+        <input type="date" required id="dob"
+            class="mt-1 block px-2 h-10 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <button type="submit"
+        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Calculate
+        Age</button>
+</form> -->
