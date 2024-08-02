@@ -20,7 +20,7 @@
 <body class="bg-blue-600 flex items-center justify-center min-h-screen">
     <div class="bg-blue-600 rounded-lg p-8 w-full max-w-lg">
         <div class="mb-8 bg-black p-8 rounded-lg">
-            <form id="ageForm" class=" flex items-center gap-8">
+            <form id="ageForm" class="flex items-center gap-8" onsubmit="event.preventDefault(); ageCalculate();">
                 <input type="date" required id="date-input"
                     class="w-2/3 h-12 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <button type="submit"
@@ -42,19 +42,8 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="/script.js"></script>
 </body>
 
 </html>
-<!-- 
-
-<form id="ageForm" class="space-y-4">
-    <div>
-        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
-        <input type="date" required id="dob"
-            class="mt-1 block px-2 h-10 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <button type="submit"
-        class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Calculate
-        Age</button>
-</form> -->

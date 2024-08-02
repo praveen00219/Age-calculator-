@@ -1,23 +1,65 @@
-document.getElementById("ageForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function ageCalculate() {
+  let today = new Date();
   let inputDate = new Date(document.getElementById("date-input").value);
-  const todayDate = new Date();
-  const ageInMilliseconds = todayDate - inputDate;
-  const ageDate = new Date(ageInMilliseconds);
-  const ageYears = ageDate.getUTCFullYear() - 1970;
-  const ageMonths = ageDate.getUTCMonth();
-  const ageDays = ageDate.getUTCDate() - 1;
+  let birthMonth, birthDate, birthYear;
+  let birthDetails = {
+    date: inputDate.getDate(),
+    month: inputDate.getMonth() + 1,
+    year: inputDate.getFullYear(),
+  };
+  let currentYear = today.getFullYear();
+  let currentMonth = today.getMonth() + 1;
+  let currentDate = today.getDate();
 
-  console.log("ageYears", typeof ageYears);
-  console.log("ageMonths", typeof ageMonths);
-  console.log("ageDays", typeof ageDays);
+  leapChecker(currentYear);
 
-  if (ageYears < 0) {
+  if (
+    birthDetails.year > currentYear ||
+    (birthDetails.month > currentMonth && birthDetails.year == currentYear) ||
+    (birthDetails.date > currentDate &&
+      birthDetails.month == currentMonth &&
+      birthDetails.year == currentYear)
+  ) {
     alert("Not Born Yet");
+    displayResult("-", "-", "-");
     return;
   }
 
-  document.getElementById("years").textContent = ageYears;
-  document.getElementById("months").textContent = ageMonths;
-  document.getElementById("days").textContent = ageDays;
-});
+  birthYear = currentYear - birthDetails.year;
+
+  if (currentMonth >= birthDetails.month) {
+    birthMonth = currentMonth - birthDetails.month;
+  } else {
+    birthYear--;
+    birthMonth = 12 + currentMonth - birthDetails.month;
+  }
+
+  if (currentDate >= birthDetails.date) {
+    birthDate = currentDate - birthDetails.date;
+  } else {
+    birthMonth--;
+    let days = months[currentMonth - 2];
+    birthDate = days + currentDate - birthDetails.date;
+    if (birthMonth < 0) {
+      birthMonth = 11;
+      birthYear--;
+    }
+  }
+  displayResult(birthDate, birthMonth, birthYear);
+}
+
+function displayResult(bDate, bMonth, bYear) {
+  document.getElementById("years").textContent = bYear;
+  document.getElementById("months").textContent = bMonth;
+  document.getElementById("days").textContent = bDate;
+}
+
+function leapChecker(year) {
+  if (year % 4 == 0 || (year % 100 == 0 && year % 400 == 0)) {
+    months[1] = 29;
+  } else {
+    months[1] = 28;
+  }
+}
